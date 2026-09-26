@@ -1,7 +1,7 @@
 <template>
-  <div class="layout-wrapper">
+  <div class="layout-wrapper d-flex flex-column min-vh-100">
     <Navbar />
-    <main class="main-content">
+    <main class="main-content flex-grow-1 py-4">
       <slot />
     </main>
     <Footer />
@@ -12,16 +12,3 @@
 import Navbar from '@/components/Navbar.vue'
 import Footer from '@/components/Footer.vue'
 </script>
-
-<style scoped>
-.layout-wrapper {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-}
-
-.main-content {
-  flex: 1;
-  padding: 2rem 0;
-}
-</style>

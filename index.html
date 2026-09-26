@@ -1,17 +1,170 @@
 <!doctype html>
 <html lang="vi">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Core Vue Frontend</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  </head>
-  <body>
-    <div id="app"></div>
-    <script type="module" src="/src/main.js"></script>
-  </body>
-</html>
 
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Core Vue Frontend</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap"
+    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
+    rel="stylesheet" />
+  <style>
+    @layer base {
+
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        overscroll-behavior: none;
+      }
+
+      main> :first-child {
+        margin-top: 0 !important;
+      }
+
+      main> :last-child {
+        margin-bottom: 0 !important;
+      }
+    }
+
+    ::-webkit-scrollbar {
+      display: none;
+    }
+  </style>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            'outline-variant': '#bfc7d2',
+            'on-primary-fixed': '#001d31',
+            'surface-bright': '#f8f9ff',
+            'on-surface': '#0b1c30',
+            error: '#ba1a1a',
+            'secondary-container': '#fd761a',
+            outline: '#707881',
+            'on-surface-variant': '#3f4850',
+            'surface-tint': '#006398',
+            'status-danger': '#DC2626',
+            'on-error-container': '#93000a',
+            'on-secondary': '#ffffff',
+            'status-warning': '#D97706',
+            surface: '#f8f9ff',
+            'surface-container-low': '#eff4ff',
+            'tertiary-fixed-dim': '#bec6e0',
+            'text-muted': '#64748B',
+            'surface-card': '#FFFFFF',
+            'primary-container': '#007bb9',
+            'secondary-fixed': '#ffdbca',
+            'primary-fixed': '#cce5ff',
+            'status-info-bg': '#DBEAFE',
+            'status-success-bg': '#DCFCE7',
+            'on-tertiary-fixed': '#131b2e',
+            'on-primary-fixed-variant': '#004b73',
+            background: '#f8f9ff',
+            'surface-container-lowest': '#ffffff',
+            'on-tertiary': '#ffffff',
+            'border-subtle': '#E2E8F0',
+            'surface-container-highest': '#d3e4fe',
+            'secondary-fixed-dim': '#ffb690',
+            'on-tertiary-fixed-variant': '#3f465c',
+            'inverse-primary': '#93ccff',
+            'on-secondary-fixed-variant': '#783200',
+            'surface-container': '#e5eeff',
+            'on-error': '#ffffff',
+            'surface-dim': '#cbdbf5',
+            secondary: '#9d4300',
+            'surface-page': '#F8FAFC',
+            'on-secondary-fixed': '#341100',
+            'tertiary-container': '#6c748b',
+            'status-success': '#16A34A',
+            'inverse-surface': '#213145',
+            tertiary: '#545c72',
+            'on-primary-container': '#fdfcff',
+            'surface-subtle': '#F1F5F9',
+            'error-container': '#ffdad6',
+            'border-strong': '#CBD5E1',
+            'text-primary': '#0F172A',
+            'status-warning-bg': '#FEF3C7',
+            primary: '#006194',
+            'text-secondary': '#334155',
+            'surface-container-high': '#dce9ff',
+            'tertiary-fixed': '#dae2fd',
+            'on-secondary-container': '#5c2400',
+            'on-primary': '#ffffff',
+            'on-background': '#0b1c30',
+            'primary-fixed-dim': '#93ccff',
+            'inverse-on-surface': '#eaf1ff',
+            'surface-variant': '#d3e4fe',
+            'status-info': '#2563EB',
+            'on-tertiary-container': '#fefcff'
+          },
+          borderRadius: {
+            DEFAULT: '0.25rem',
+            lg: '0.5rem',
+            xl: '0.75rem',
+            full: '9999px'
+          },
+          spacing: {
+            'space-lg': '1.5rem',
+            gutter: '1.5rem',
+            margin: '2rem',
+            'space-xs': '0.25rem',
+            'space-xl': '2rem',
+            'margin-mobile': '1rem',
+            'gutter-mobile': '1rem',
+            'space-md': '1rem',
+            'space-2xl': '3rem',
+            'space-sm': '0.5rem'
+          },
+          fontFamily: {
+            'headline-sm': ['Plus Jakarta Sans'],
+            'body-sm': ['Plus Jakarta Sans'],
+            'label-md': ['Plus Jakarta Sans'],
+            'headline-lg-mobile': ['Plus Jakarta Sans'],
+            'label-lg': ['Plus Jakarta Sans'],
+            'body-md': ['Plus Jakarta Sans'],
+            'numeric-price': ['Plus Jakarta Sans'],
+            'headline-lg': ['Plus Jakarta Sans'],
+            'display-lg': ['Plus Jakarta Sans'],
+            'body-lg': ['Plus Jakarta Sans'],
+            'label-sm': ['Plus Jakarta Sans'],
+            'title-md': ['Plus Jakarta Sans'],
+            'headline-md': ['Plus Jakarta Sans']
+          },
+          fontSize: {
+            'headline-sm': ['20px', { lineHeight: '28px', fontWeight: '600' }],
+            'body-sm': ['12px', { lineHeight: '18px', fontWeight: '400' }],
+            'label-md': ['12px', { lineHeight: '16px', fontWeight: '600' }],
+            'headline-lg-mobile': ['26px', { lineHeight: '34px', fontWeight: '700' }],
+            'label-lg': ['14px', { lineHeight: '20px', fontWeight: '600' }],
+            'body-md': ['14px', { lineHeight: '22px', fontWeight: '400' }],
+            'numeric-price': ['22px', { lineHeight: '28px', fontWeight: '800' }],
+            'headline-lg': ['32px', { lineHeight: '40px', fontWeight: '700' }],
+            'display-lg': ['40px', { lineHeight: '48px', fontWeight: '800' }],
+            'body-lg': ['16px', { lineHeight: '26px', fontWeight: '400' }],
+            'label-sm': ['11px', { lineHeight: '14px', letterSpacing: '0.5px', fontWeight: '700' }],
+            'title-md': ['16px', { lineHeight: '24px', fontWeight: '600' }],
+            'headline-md': ['24px', { lineHeight: '32px', fontWeight: '700' }]
+          }
+        }
+      }
+    }
+  </script>
+</head>
+
+<body>
+  <div id="app"></div>
+  <script type="module" src="/src/main.js"></script>
+</body>
+
+</html>
