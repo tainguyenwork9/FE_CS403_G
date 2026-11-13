@@ -110,8 +110,9 @@ async function xuLyDangNhap() {
       matKhau: matKhau.value
     })
 
-    localStorage.setItem('auth_token', result.token)
-    localStorage.setItem('auth_user', JSON.stringify(result.user))
+    const payload = result.data || result
+    localStorage.setItem('auth_token', payload.token || result.token)
+    localStorage.setItem('auth_user', JSON.stringify(payload.user || result.user))
     window.dispatchEvent(new Event('auth:updated'))
     dangNhapThanhCong.value = true
     thongBao.value = result.message || 'Đăng nhập thành công.'

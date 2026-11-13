@@ -17,7 +17,9 @@
         <router-link to="/tim-kiem-xe" class="nav-item">Xe thuê</router-link>
 
         <template v-if="isLoggedIn && isCustomer">
+          <router-link to="/don-dat-xe" class="nav-item">Đơn đặt xe</router-link>
           <router-link to="/ho-so-ca-nhan" class="nav-item">Hồ sơ</router-link>
+          <router-link to="/doi-mat-khau" class="nav-item">Đổi mật khẩu</router-link>
         </template>
 
         <template v-if="isLoggedIn && isStaffOrAdmin">
@@ -50,6 +52,7 @@
 
 <script setup>
 import { computed, ref, onMounted } from 'vue'
+import api from '@/services/api'
 
 const normalizeRole = (role) => String(role || '').trim().toLowerCase()
 
@@ -78,12 +81,18 @@ const isCustomer = computed(() => ['khach_hang', 'customer'].includes(normalizeR
 const isStaffOrAdmin = computed(() => ['nhan_vien', 'admin'].includes(normalizeRole(authUser.value?.vaiTro)))
 const isAdmin = computed(() => normalizeRole(authUser.value?.vaiTro) === 'admin')
 
-function dangXuat() {
-  localStorage.removeItem('auth_token')
-  localStorage.removeItem('auth_user')
-  authUser.value = null
-  window.dispatchEvent(new Event('auth:updated'))
-  window.location.assign('/')
+async function dangXuat() {
+  try {
+    await api.post('/logout')
+  } catch {
+    // Bỏ qua lỗi mạng khi đăng xuất để luôn dọn sạch token local
+  } finally {
+    localStorage.removeItem('auth_token')
+    localStorage.removeItem('auth_user')
+    authUser.value = null
+    window.dispatchEvent(new Event('auth:updated'))
+    window.location.assign('/')
+  }
 }
 </script>
 

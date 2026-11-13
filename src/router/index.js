@@ -6,6 +6,8 @@ import DoiMatKhau from '@/views/auth/DoiMatKhau.vue'
 import HoSoCaNhan from '@/views/profile/HoSoCaNhan.vue'
 import TimKiemXe from '@/views/vehicle/TimKiemXe.vue'
 import ChiTietXe from '@/views/vehicle/ChiTietXe.vue'
+import ThanhToanBooking from '@/views/booking/ThanhToanBooking.vue'
+import QuanLyDonDatXe from '@/views/booking/QuanLyDonDatXe.vue'
 import KiemTraHoSo from '@/views/admin/KiemTraHoSo.vue'
 import ThongKe from '@/views/admin/ThongKe.vue'
 
@@ -59,6 +61,18 @@ const routes = [
     name: 'ChiTietXe',
     component: ChiTietXe,
     meta: { layout: 'default' }
+  },
+  {
+    path: '/thanh-toan/:id',
+    name: 'ThanhToanBooking',
+    component: ThanhToanBooking,
+    meta: { layout: 'default', requiresAuth: true }
+  },
+  {
+    path: '/don-dat-xe',
+    name: 'QuanLyDonDatXe',
+    component: QuanLyDonDatXe,
+    meta: { layout: 'default', requiresAuth: true, roles: ['khach_hang'] }
   },
   {
     path: '/kiem-tra-ho-so',

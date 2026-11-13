@@ -215,7 +215,7 @@ async function xuLyLuuHoSo() {
       ['anhGPLX', anhGPLX.value]
     ].filter(([, file]) => file)
 
-    if (documents.length) {
+    if (documents.length || soCCCD.value || soGPLX.value) {
       const formData = new FormData()
       formData.append('soCCCD', soCCCD.value)
       formData.append('soGPLX', soGPLX.value)
